@@ -1,21 +1,48 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <h1>Questionário Social</h1>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<h3> <i class="fa fa-plus-circle"></i> Cadastrar</h3>
+<form #cadastro="ngForm" (submit)="salvar(cadastro)">
+  <div class="form-group">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" [(ngModel)]="nome" required><br>
+    <label for="sexo">Sexo: </label>
+    <input type="radio" id="feminino" name="gender" value="f" [(ngModel)]="sexo" required>Feminino
+    <input type="radio" id="masculino" name="gender" value="m" [(ngModel)]="sexo" required>Masculino<br>
+    <label for="idade">Idade:</label>
+    <input type="text" id="idade" name="idade" [(ngModel)]="idade" required><br>
+    Cidade:
+    <select id="cidade" name="cidade" [(ngModel)]="cidade">
+      <option value="1">Itaguatins</option>
+      <option value="2">Araguatins</option>
+      <option value="3">Araguaina</option>
+      <option value="4">Palmas</option>
+    </select>
+  </div>
+  
+  <div>
+    <button type="submit" class="btn btn-primary" [disabled]="!cadastro.form.valid">
+      Salvar
+    </button>
+    <button type="reset" class="btn btn-secondary" formnovalidate>
+      Limpar
+    </button>
+  </div>
+  
+</form>
 
+<div>
+  Nome da pessoa mais velha: {{ pessoaMaisVelha() }}
+  <br>
+  Nome da pessoa mais nova: {{pessoaMaisNova()}}
+  <br>
+  Media da Idade das Mulheres: {{ mediaIdadeF()}}
+  <br>
+  Media da Idade dos Homens: {{ mediaIdadeM ()}}
+  <br>
+  Media da Idade por cidade:{{mediaCidade()}}
+  <br>
+      
+</div>
 <router-outlet></router-outlet>
