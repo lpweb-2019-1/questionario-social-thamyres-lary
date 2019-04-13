@@ -2,8 +2,9 @@
 <div style="text-align:center">
   <h1>Questionário Social</h1>
 </div>
-<h3> <i class="fa fa-plus-circle"></i> Cadastrar</h3>
+
 <form #cadastro="ngForm" (submit)="salvar(cadastro)">
+  <h4> <i class="fa fa-plus-circle"></i> Cadastrar</h4>
   <div class="form-group">
     <label for="nome">Nome:</label>
     <input type="text" id="nome" name="nome" [(ngModel)]="nome" required><br>
@@ -20,8 +21,8 @@
       <option value="4">Palmas</option>
     </select>
   </div>
-  
-  <div>
+
+  <div style="text-align:center">
     <button type="submit" class="btn btn-primary" [disabled]="!cadastro.form.valid">
       Salvar
     </button>
@@ -29,20 +30,22 @@
       Limpar
     </button>
   </div>
-  
+
 </form>
 
-<div>
-  Nome da pessoa mais velha: {{ pessoaMaisVelha() }}
+<div style="text-align:center">
+  Nome da pessoa mais velha: {{ questionario.pessoaMaisVelha() }}
   <br>
-  Nome da pessoa mais nova: {{pessoaMaisNova()}}
+  Nome da pessoa mais nova: {{questionario.pessoaMaisNova()}}
   <br>
-  Media da Idade das Mulheres: {{ mediaIdadeF()}}
+  Media da Idade das Mulheres: {{ questionario.mediaIdadeF()}}
   <br>
-  Media da Idade dos Homens: {{ mediaIdadeM ()}}
+  Media da Idade dos Homens: {{ questionario.mediaIdadeM ()}}
   <br>
-  Media da Idade por cidade:{{mediaCidade()}}
+  Media da Idade por cidade:{{questionario.mediaCidade()}}
   <br>
-      
+  Porcentagem de Pessoas por sexo em cada cidade:{{questionario.porcentagemSexo()}}
+  <br>
+
 </div>
 <router-outlet></router-outlet>
